@@ -1,0 +1,12 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+from scipy.optimize import curve_fit
+from math import exp
+df = pd.read_csv("L:/bucket/2019_0361_unprocessed/2019_0361_0002_MAX_TEST.txt", sep='\t')
+df = df.drop([df.index[0]])
+df
+def func(x,y):
+    return (x/y)*60
+x= 3501
+y= 1368.315
+#2.558 bps = 153.5 bpm
