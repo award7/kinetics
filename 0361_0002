@@ -25,11 +25,8 @@ def proc_hr(*, file: str, **kwargs) -> None:
     df = pd.read_csv("L:/bucket/2019_0361_unprocessed/2019_0361_0002_MAX_TEST.txt", header=None, names=["time"])
 
     # calc rri
-
+    df.rename(columns={'Sel Duration': 'rri'}, inplace=True)
     df['rri'] = df['time'].diff()
-  # apply hampel filter to rri
-
-    #df['rri_filtered'] = hampel(df['rri'], imputation=True)
 
     # calc hr
 
@@ -62,3 +59,4 @@ def proc_hr(*, file: str, **kwargs) -> None:
     # add time (s)
 
     df_hr1s.insert(loc=0, column='time_(s)', value=np.linspace(1, time_max, time_max).astype(int))
+proc_hr(file="")
